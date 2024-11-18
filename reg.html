@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-transform: uppercase; /* Auto capitalize */
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            /* No capitalization for email */
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px; /* Add space between buttons */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .next-button {
+            background-color: #28a745; /* Green color for Next button */
+            color: white;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        legend {
+            font-weight: bold;
+            color: blue;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .preview {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>College Registration Form</h2>
+        <form id="registrationForm">
+            <!-- Personal Information Section -->
+            <fieldset id="personalInfo" class="active">
+                <legend>Personal Information</legend>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="middleName">Middle Name</label>
+                    <input type="text" id="middleName" name="middleName" oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">Date of Birth</label>
+                    <input type="date" id="birthDate" name="birthDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <input type="radio" id="male" name="gender" value="Male" required> Male
+                    <input type="radio" id="female" name="gender" value="Female" required> Female
+                </div>
+
+                <div class="form-group">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" name="nationality" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" name="phone" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="postalAddress">Postal Address</label>
+                    <input type="text" id="postalAddress" name="postalAddress" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+                <button type="button" class="next-button" onclick="nextStep('personalInfo', 'courseSelection')">Next</button>
+            </fieldset>
+
+            <!-- Course Selection Section -->
+            <fieldset id="courseSelection">
+                <legend>Course Selection</legend>
+                <div class="form-group">
+                    <label>Select Level</label>
+                    <input type="radio" id="certificateLevel" name="courseLevel" value="certificate" onclick="toggleCourseOptions('certificate')" > Certificate
+                    <input type="radio" id="diplomaLevel" name="courseLevel" value="diploma" onclick="toggleCourseOptions('diploma')" > Diploma
+                </div>
+
+                <div id="certificateCourses" class="course-options" style="display:none;">
+                    <label>Certificate Programmes (Choose your top three)</label>
+                    <select name="certificateProgram1" id="certificateProgram1" >
+                        <option value="">Select first choice</option>
+                        <option value="EDUCATION MANAGEMENT AND PLANNING">Education Management and Planning (1 year)</option>
+                        <option value="ACCOUNTANCY">Accountancy (1 year)</option>
+                        <option value="PROCUREMENT AND SUPPLY MANAGEMENT">Procurement and Supply Management (1 year)</option>
+                        <option value="BUSINESS ADMINISTRATION">Business Administration (1 year)</option>
+                        <option value="LAW">Law (1 year)</option>
+                        <option value="INFORMATION AND COMMUNICATION TECHNOLOGY">Information and Communication Technology (1 year)</option>
+                        <option value="COMMUNITY DEVELOPMENT">Community Development (1 year)</option>
+                    </select>
+                    <select name="certificateProgram2" id="certificateProgram2">
+                        <option value="">Select second choice</option>
+                        <option value="EDUCATION MANAGEMENT AND PLANNING">Education Management and Planning (1 year)</option>
+                        <option value="ACCOUNTANCY">Accountancy (1 year)</option>
+                        <option value="PROCUREMENT AND SUPPLY MANAGEMENT">Procurement and Supply Management (1 year)</option>
+                        <option value="BUSINESS ADMINISTRATION">Business Administration (1 year)</option>
+                        <option value="LAW">Law (1 year)</option>
+                        <option value="INFORMATION AND COMMUNICATION TECHNOLOGY">Information and Communication Technology (1 year)</option>
+                        <option value="COMMUNITY DEVELOPMENT">Community Development (1 year)</option>
+                    </select>
+                    <select name="certificateProgram3" id="certificateProgram3">
+                        <option value="">Select third choice</option>
+                        <option value="EDUCATION MANAGEMENT AND PLANNING">Education Management and Planning (1 year)</option>
+                        <option value="ACCOUNTANCY">Accountancy (1 year)</option>
+                        <option value="PROCUREMENT AND SUPPLY MANAGEMENT">Procurement and Supply Management (1 year)</option>
+                        <option value="BUSINESS ADMINISTRATION">Business Administration (1 year)</option>
+                        <option value="LAW">Law (1 year)</option>
+                        <option value="INFORMATION AND COMMUNICATION TECHNOLOGY">Information and Communication Technology (1 year)</option>
+                        <option value="COMMUNITY DEVELOPMENT">Community Development (1 year)</option>
+                    </select>
+                </div>
+
+                <div id="diplomaCourses" class="course-options" style="display:none;">
+                    <label>Diploma Programmes (Choose your top three)</label>
+                    <select name="diplomaProgram1" id="diplomaProgram1" >
+                        <option value="">Select first choice</option>
+                        <option value="EDUCATION MANAGEMENT AND PLANNING">Education Management and Planning (2 years)</option>
+                        <option value="ACCOUNTANCY">Accountancy (2 years)</option>
+                        <option value="PROCUREMENT AND SUPPLY MANAGEMENT">Procurement and Supply Management (2 years)</option>
+                        <option value="BUSINESS ADMINISTRATION">Business Administration (2 years)</option>
+                        <option value="LAW">Law (2 years)</option>
+                        <option value="INFORMATION AND COMMUNICATION TECHNOLOGY">Information and Communication Technology (2 years)</option>
+                        <option value="COMMUNITY DEVELOPMENT">Community Development (2 years)</option>
+                    </select>
+                    <select name="diplomaProgram2" id="diplomaProgram2">
+                        <option value="">Select second choice</option>
+                        <option value="EDUCATION MANAGEMENT AND PLANNING">Education Management and Planning (2 years)</option>
+                        <option value="ACCOUNTANCY">Accountancy (2 years)</option>
+                        <option value="PROCUREMENT AND SUPPLY MANAGEMENT">Procurement and Supply Management (2 years)</option>
+                        <option value="BUSINESS ADMINISTRATION">Business Administration (2 years)</option>
+                        <option value="LAW">Law (2 years)</option>
+                        <option value="INFORMATION AND COMMUNICATION TECHNOLOGY">Information and Communication Technology (2 years)</option>
+                        <option value="COMMUNITY DEVELOPMENT">Community Development (2 years)</option>
+                    </select>
+                    <select name="diplomaProgram3" id="diplomaProgram3">
+                        <option value="">Select third choice</option>
+                        <option value="EDUCATION MANAGEMENT AND PLANNING">Education Management and Planning (2 years)</option>
+                        <option value="ACCOUNTANCY">Accountancy (2 years)</option>
+                        <option value="PROCUREMENT AND SUPPLY MANAGEMENT">Procurement and Supply Management (2 years)</option>
+                        <option value="BUSINESS ADMINISTRATION">Business Administration (2 years)</option>
+                        <option value="LAW">Law (2 years)</option>
+                        <option value="INFORMATION AND COMMUNICATION TECHNOLOGY">Information and Communication Technology (2 years)</option>
+                        <option value="COMMUNITY DEVELOPMENT">Community Development (2 years)</option>
+                    </select>
+                </div>
+
+                <button type="button" onclick="goBack('courseSelection', 'personalInfo')">Back</button>
+                <button type="button" class="next-button" onclick="nextStep('courseSelection', 'educationInfo')">Next</button>
+            </fieldset>
+
+            <!-- Education Information Section -->
+            <fieldset id="educationInfo">
+                <legend>Education Information</legend>
+                <div class="form-group">
+                    <label for="primarySchool">Primary School Name</label>
+                    <input type="text" id="primarySchool" name="primarySchool" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="oLevelSchool">O-Level School Name</label>
+                    <input type="text" id="oLevelSchool" name="oLevelSchool" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="aLevelSchool">A-Level School Name (if applicable)</label>
+                    <input type="text" id="aLevelSchool" name="aLevelSchool" oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="collegeName">College Name (if applicable)</label>
+                    <input type="text" id="collegeName" name="collegeName" oninput="this.value = this.value.toUpperCase()">
+                </div>
+                <button type="button" onclick="goBack('educationInfo', 'courseSelection')">Back</button>
+                <button type="button" class="next-button" onclick="nextStep('educationInfo', 'emergencyContact')">Next</button>
+            </fieldset>
+
+            <!-- Emergency Contact Section -->
+            <fieldset id="emergencyContact">
+                <legend>Emergency Contact</legend>
+                <div class="form-group">
+                    <label for="emergencyName">Emergency Contact Name</label>
+                    <input type="text" id="emergencyName" name="emergencyName" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="relationship">Relationship</label>
+                    <input type="text" id="relationship" name="relationship" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="emergencyPhone">Emergency Phone Number</label>
+                    <input type="text" id="emergencyPhone" name="emergencyPhone" required oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="emergencyEmail">Emergency Email</label>
+                    <input type="email" id="emergencyEmail" name="emergencyEmail" required>
+                </div>
+                <button type="button" onclick="goBack('emergencyContact', 'educationInfo')">Back</button>
+                <button type="button" class="next-button" onclick="nextStep('emergencyContact', 'preview')">Next</button>
+            </fieldset>
+
+            <!-- Preview Section -->
+            <fieldset id="preview">
+                <legend>Preview Your Information</legend>
+                <div id="previewData"></div>
+                <button type="button" onclick="submitForm()">Submit</button>
+                <button type="button" onclick="goBack('preview', 'emergencyContact')">Back</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        function nextStep(currentId, nextId) {
+            if (!validateFields(currentId)) {
+                alert("Please fill all required fields before proceeding.");
+                return;
+            }
+            document.getElementById(currentId).classList.remove('active');
+            document.getElementById(nextId).classList.add('active');
+
+            if (nextId === 'preview') {
+                populatePreview();
+            }
+        }
+
+        function goBack(currentId, previousId) {
+            document.getElementById(currentId).classList.remove('active');
+            document.getElementById(previousId).classList.add('active');
+        }
+
+        function validateFields(sectionId) {
+            const inputs = document.querySelectorAll(`#${sectionId} input[required], #${sectionId} select[required]`);
+            for (const input of inputs) {
+                if (!input.value) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function toggleCourseOptions(selectedLevel) {
+            if (selectedLevel === 'certificate') {
+                document.getElementById('certificateCourses').style.display = 'block';
+                document.getElementById('diplomaCourses').style.display = 'none';
+            } else if (selectedLevel === 'diploma') {
+                document.getElementById('diplomaCourses').style.display = 'block';
+                document.getElementById('certificateCourses').style.display = 'none';
+            }
+        }
+
+        function populatePreview() {
+            const lastName = document.getElementById('lastName').value;
+            const firstName = document.getElementById('firstName').value;
+            const middleName = document.getElementById('middleName').value;
+            const birthDate = document.getElementById('birthDate').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const nationality = document.getElementById('nationality').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const postalAddress = document.getElementById('postalAddress').value;
+            const courseLevel = document.querySelector('input[name="courseLevel"]:checked').value;
+            const certificateProgram1 = document.getElementById('certificateProgram1').value;
+            const certificateProgram2 = document.getElementById('certificateProgram2').value;
+            const certificateProgram3 = document.getElementById('certificateProgram3').value;
+            const diplomaProgram1 = document.getElementById('diplomaProgram1').value;
+            const diplomaProgram2 = document.getElementById('diplomaProgram2').value;
+            const diplomaProgram3 = document.getElementById('diplomaProgram3').value;
+            const primarySchool = document.getElementById('primarySchool').value;
+            const oLevelSchool = document.getElementById('oLevelSchool').value;
+            const aLevelSchool = document.getElementById('aLevelSchool').value;
+            const collegeName = document.getElementById('collegeName').value;
+            const emergencyName = document.getElementById('emergencyName').value;
+            const relationship = document.getElementById('relationship').value;
+            const emergencyPhone = document.getElementById('emergencyPhone').value;
+            const emergencyEmail = document.getElementById('emergencyEmail').value;
+
+            const selectedCourses = courseLevel === 'certificate' ? `
+                <p><strong>First Choice:</strong> ${certificateProgram1}</p>
+                <p><strong>Second Choice:</strong> ${certificateProgram2}</p>
+                <p><strong>Third Choice:</strong> ${certificateProgram3}</p>
+            ` : `
+                <p><strong>First Choice:</strong> ${diplomaProgram1}</p>
+                <p><strong>Second Choice:</strong> ${diplomaProgram2}</p>
+                <p><strong>Third Choice:</strong> ${diplomaProgram3}</p>
+            `;
+
+            const previewData = `
+                <h3>Your Information:</h3>
+                <p><strong>Last Name:</strong> ${lastName}</p>
+                <p><strong>First Name:</strong> ${firstName}</p>
+                <p><strong>Middle Name:</strong> ${middleName}</p>
+                <p><strong>Date of Birth:</strong> ${birthDate}</p>
+                <p><strong>Gender:</strong> ${gender}</p>
+                <p><strong>Nationality:</strong> ${nationality}</p>
+                <p><strong>Phone Number:</strong> ${phone}</p>
+                <p><strong>Email Address:</strong> ${email}</p>
+                <p><strong>Postal Address:</strong> ${postalAddress}</p>
+                <p><strong>Course Level:</strong> ${courseLevel.charAt(0).toUpperCase() + courseLevel.slice(1)}</p>
+                ${selectedCourses}
+                <p><strong>Primary School:</strong> ${primarySchool}</p>
+                <p><strong>O-Level School:</strong> ${oLevelSchool}</p>
+                <p><strong>A-Level School:</strong> ${aLevelSchool}</p>
+                <p><strong>College Name:</strong> ${collegeName}</p>
+                <p><strong>Emergency Contact Name:</strong> ${emergencyName}</p>
+                <p><strong>Relationship:</strong> ${relationship}</p>
+                <p><strong>Emergency Phone:</strong> ${emergencyPhone}</p>
+                <p><strong>Emergency Email:</strong> ${emergencyEmail}</p>
+            `;
+
+            document.getElementById('previewData').innerHTML = previewData;
+        }
+
+        function submitForm() {
+            // In a real application, you would submit the form data to your server here
+            alert("Form submitted successfully!");
+            // Reset the form or redirect as needed
+        }
+    </script>
+
+</body>
+
+</html>

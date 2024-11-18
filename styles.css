@@ -1,0 +1,333 @@
+/* General Body and Background */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Layout with Flexbox */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6f6c6c;
+    color: #fff;
+    padding: 10px 20px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Header Left and Right Sections */
+.header-left {
+    display: flex;
+    align-items: center;
+    margin-right: 1px;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-right {
+    margin-left: 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header ul li {
+    margin: 0 1rem;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+header ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Toggle Button Styling */
+.toggle-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+/* Sidebar Styling */
+aside {
+    width: 200px; /* Width of the sidebar */
+    background-color: #cac0c0;
+    padding: 2rem;
+    position: fixed;
+    left: -200px; /* Hide by default (off-screen) */
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    padding-top: 60px; /* Account for header height */
+    transition: left 0.3s ease; /* Smooth transition */
+}
+
+aside.open {
+    left: 0; /* Show when open */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 1px;
+    cursor: auto;
+}
+
+.sidebar li ul.dropdown {
+    display: none;
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.sidebar li:hover ul.dropdown {
+    display: block;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar li ul.dropdown li a:hover {
+    color: #007bff;
+}
+
+.user-profile {
+    text-align: center;
+    margin: 20px 0; /* Center the content and add space */
+}
+
+.profile-picture {
+    width: 100px; /* Set a fixed width */
+    height: 100px; /* Set a fixed height */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image covers the entire area */
+    border: 2px solid #ddd; /* Optional: Add a border for better visibility */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items at the start */
+    align-items: stretch; /* Allow items to stretch to full width */
+    width: 100%;
+    height: 100%; /* Full height */
+}
+
+main {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px; /* Set a maximum width for larger devices */
+    margin: 0 auto; /* Center the main content */
+    flex-grow: 1; /* Allow main to grow and fill available space */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+h2, h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    align-items: center;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    main {
+        padding: 15px; /* Less padding on smaller screens */
+    }
+
+    th, td {
+        font-size: 14px; /* Smaller font size */
+    }
+
+    h2, h3 {
+        font-size: 1.5em; /* Responsive heading sizes */
+    }
+}
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #6f6c6c;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Form Styling */
+section.form-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1bb303;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-column {
+    flex: 1;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333333;
+    font-size: 14px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333333;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form select:focus,
+form input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0; /* Reset for mobile view */
+    }
+
+    .toggle-button {
+        display: inline-block; /* Show toggle button on small screens */
+    }
+
+    aside {
+        position: fixed; /* Keep sidebar fixed */
+        left: -200px; /* Hide by default */
+        width: 200px; /* Width of the sidebar */
+    }
+
+    aside.open {
+        left: 0; /* Show when open */
+    }
+
+    .form-row {
+        flex-direction: column; /* Stack form fields vertically */
+    }
+
+    form button[type="submit"] {
+        width: 100%;
+    }
+}
+
+/* Alert Styling */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
